@@ -14,7 +14,7 @@ def merge( arrA, arrB ):
             i = i + 1
 
         else:
-            merged_arr[k] = arraB[j]
+            merged_arr[k] = arrB[j]
             k= k+1
             j= j+1
 
@@ -28,26 +28,38 @@ def merge( arrA, arrB ):
         j =j+1
     return merged_arr
 # TO-DO: implement the Merge Sort function below USING RECURSION
-def merge_sort( arr ):
-    if len(arr)> 1:
-        mid = len(arr)//2 # finding the middle of the Array
-        L = arr[:mid] # dividing the array elements
+
+
+def merge_sort(arr):
+    # def __index__(arr):
+    #     return len(arr)/2
+    n = len(arr)
+    if n > 1:
+        
+        
+        # def __index__(arr):
+        #     return len(arr)/2
+        n = len(arr)
+        mid = n//2 # finding the middle of the Array
+        L = arr[:mid]# dividing the array elements
         R = arr[mid:] # into two halves
+        print(L, R)
 
+        #sorting the first half
         merge_sort(L)
+        # sorting the second half 
         merge_sort(R) 
-
+        
         #copyingto temp arrays L[] and R[]
-        i = 0
-        j = 0
-        k = 0
+        i = j = k = 0
         while i < len(L) and j < len(R):
             if L[i] < R[j]:
                 arr[k] = L[i]
                 i+=1
-        else:
-            arr[k] = R[j]
-            j+=1
+                
+            else:
+                arr[k] = R[j]
+                j+=1
             k+=1
 
         #checking to see if any element was left
@@ -59,8 +71,10 @@ def merge_sort( arr ):
             arr[k] = R[j]
             j+=1
             k+=1
+        # else:
+        #     merge_sort(L), merge_sort(R), merge(L,R)
     return arr
-
+#  print(merge_sort(arr))
 
 # STRETCH: implement an in-place merge sort algorithm
 def merge_in_place(arr, start, mid, end):
